@@ -80,7 +80,39 @@
     <script src="products.js"></script>
     <script src="script.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/ShivaniVellanki/quill-custom-websdk-dist@v1.0.6/kore-ai-sdk.min.js"></script>
-    <script src= "bot.js" ></script>
+    <!-- <script src= "bot.js" ></script> -->
+     <script>
+        document.addEventListener('DOMContentLoaded', function () {
+    console.log('Analytics object before getting:', window.analytics);
+    let insideData = getAnalytics();
+    console.log('Analytics data retrieved:', insideData);
 
+    function showChatWithCustomData() {
+    if (window.koreBot && window.koreChatCfg) {
+        window.koreChatCfg.botOptions.botInfo.customData = insideData;
+        window.koreBot.show(window.koreChatCfg);
+    } else {
+
+        console.error("koreBot or koreChatCfg is not defined");
+    }
+}
+
+document.getElementById('chatBtn').onclick = showChatWithCustomData;
+
+// document.getElementById('chatBtn2').onclick = showChatWithCustomData;
+
+    // Set customData just before showing bot
+    // document.getElementById('chatBtn').onclick = function () {
+    //     if (window.koreBot && window.koreChatCfg) {
+
+    //         window.koreChatCfg.botOptions.botInfo.customData = insideData;
+    //         window.koreBot.show(window.koreChatCfg);
+            
+    //     } else {
+    //         console.error("koreBot or koreChatCfg is not defined");
+    //     }
+    // };
+});
+     </script>
 </body>
 </html> 
