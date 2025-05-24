@@ -1,26 +1,15 @@
 document.addEventListener('DOMContentLoaded', function () {
     console.log('Analytics object before getting:', window.analytics);
-    const insideData = getAnalytics();
+    let insideData = getAnalytics();
     console.log('Analytics data retrieved:', insideData);
 
-    // Set customData dynamically if bot config is available
-    if (window.KoreSDK?.chatConfig?.botOptions?.botInfo) {
-        window.KoreSDK.chatConfig.botOptions.botInfo.customData = insideData;
-    } else {
-        console.warn("KoreSDK.chatConfig.botOptions.botInfo is not defined.");
-    }
-
-    // Show chat window on button click
-    const chatBtn = document.getElementById('chatBtn');
-    if (chatBtn) {
-        chatBtn.onclick = function () {
-            if (typeof koreBot !== 'undefined') {
-                koreBot.show(KoreSDK.chatConfig);
-            } else {
-                console.error("koreBot is not defined");
-            }
-        };
-    } else {
-        console.warn("Chat button not found in DOM.");
-    }
+    // Set customData just before showing bot
+    document.getElementById('chatBtn').onclick = function () {
+        if (window.koreBot && window.koreChatCfg) {
+            window.koreChatCfg.botOptions.botInfo.customData = insideData;
+            window.koreBot.show(window.koreChatCfg);
+        } else {
+            console.error("koreBot or koreChatCfg is not defined");
+        }
+    };
 });
