@@ -4,11 +4,12 @@ document.addEventListener('DOMContentLoaded', function() {
     let insideData = getAnalytics();
     console.log('Analytics data retrieved:', insideData);
     
-    // KoreChatSDK.chatConfig.botOptions.API_KEY_CONFIG.KEY = '9cb93b446f3744c0b678238a901b8aa18f904e3593184563a7e00e53d305ff8cstcd'; 
-    // KoreChatSDK.chatConfig.botOptions.botInfo.customData = insideData;
+    // Initialize the bot (old WebSDK style)
+    var koreBot = koreBotChat();
 
+    // Set up the click handler to show the chat window
     document.getElementById('chatBtn').onclick = function () {
-        new KoreChatSDK.chatWindow().show(KoreChatSDK.chatConfig);
+        // Show the bot with the chat configuration
+        koreBot.show(KoreSDK.chatConfig);
     };
-    
 });
