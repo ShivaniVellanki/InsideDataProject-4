@@ -1,16 +1,19 @@
-// Wait for analytics to be available
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     console.log('Analytics object before getting:', window.analytics);
     let insideData = getAnalytics();
     console.log('Analytics data retrieved:', insideData);
-    
-    // KoreChatSDK.chatConfig.botOptions.API_KEY_CONFIG.KEY = '9cb93b446f3744c0b678238a901b8aa18f904e3593184563a7e00e53d305ff8cstcd'; 
-    // KoreChatSDK.chatConfig.botOptions.botInfo.customData = insideData;
-    var koreBot = koreBotChat();
 
+    // Set customData dynamically
+    if (window.KoreSDK && window.KoreSDK.chatConfig) {
+        window.KoreSDK.chatConfig.botOptions.botInfo.customData = insideData;
+    }
+
+    // Only show bot when button is clicked
     document.getElementById('chatBtn').onclick = function () {
-        // new KoreChatSDK.chatWindow().show(KoreChatSDK.chatConfig);
-        koreBot.show(chatConfig);
+        if (typeof koreBot !== 'undefined') {
+            koreBot.show(KoreSDK.chatConfig);
+        } else {
+            console.error("koreBot is not defined");
+        }
     };
-    
 });
