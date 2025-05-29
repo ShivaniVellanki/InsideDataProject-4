@@ -90,8 +90,8 @@
     function showChatWithCustomData() {
     if (window.koreBot && window.koreChatCfg) {
         window.koreChatCfg.botOptions.botInfo.customData = insideData;
-        new window.koreBot.show(window.koreChatCfg);
-        // new KoreChatSDK.chatWindow().show(KoreChatSDK.chatConfig)
+        // new window.koreBot.show(window.koreChatCfg);
+        new KoreChatSDK.chatWindow().show(KoreChatSDK.chatConfig);
     } else {
 
         console.error("koreBot or koreChatCfg is not defined");
