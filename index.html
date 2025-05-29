@@ -6,7 +6,7 @@
     <title>Quill-like Store</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/ShivaniVellanki/quill-custom-websdk-dist@v1.0.16/kore-ai-sdk.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/ShivaniVellanki/quill-custom-websdk-dist@v1.0.17/kore-ai-sdk.min.css">
      <style>
       .header-bar {
         background-color: #2563eb;
@@ -79,7 +79,7 @@
 
     <script src="products.js"></script>
     <script src="script.js"></script>
-    <script src="https://cdn.jsdelivr.net/gh/ShivaniVellanki/quill-custom-websdk-dist@v1.0.16/kore-ai-sdk.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/ShivaniVellanki/quill-custom-websdk-dist@v1.0.17/kore-ai-sdk.min.js"></script>
     <!-- <script src= "bot.js" ></script> -->
      <script>
         document.addEventListener('DOMContentLoaded', function () {
@@ -90,7 +90,8 @@
     function showChatWithCustomData() {
     if (window.koreBot && window.koreChatCfg) {
         window.koreChatCfg.botOptions.botInfo.customData = insideData;
-        window.koreBot.show(window.koreChatCfg);
+        new window.koreBot.show(window.koreChatCfg);
+        // new KoreChatSDK.chatWindow().show(KoreChatSDK.chatConfig)
     } else {
 
         console.error("koreBot or koreChatCfg is not defined");
